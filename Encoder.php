@@ -492,7 +492,10 @@ class Encoder
                                  ord($value[$i + 3]));
                     $i += 3;
                     $utf16 = self::_utf82utf16($char);
-                    $ascii .= sprintf('\u%04s', bin2hex($utf16));
+                    $hexArray = str_split(bin2hex($utf16), 4);
+                    foreach ($hexArray as $hex) {
+                        $ascii .= sprintf('\u%04s', $hex);
+                    }
                     break;
 
                 case (($ordVarC & 0xFC) == 0xF8):
@@ -505,7 +508,10 @@ class Encoder
                                  ord($value[$i + 4]));
                     $i += 4;
                     $utf16 = self::_utf82utf16($char);
-                    $ascii .= sprintf('\u%04s', bin2hex($utf16));
+                    $hexArray = str_split(bin2hex($utf16), 4);
+                    foreach ($hexArray as $hex) {
+                        $ascii .= sprintf('\u%04s', $hex);
+                    }
                     break;
 
                 case (($ordVarC & 0xFE) == 0xFC):
@@ -519,7 +525,10 @@ class Encoder
                                  ord($value[$i + 5]));
                     $i += 5;
                     $utf16 = self::_utf82utf16($char);
-                    $ascii .= sprintf('\u%04s', bin2hex($utf16));
+                    $hexArray = str_split(bin2hex($utf16), 4);
+                    foreach ($hexArray as $hex) {
+                        $ascii .= sprintf('\u%04s', $hex);
+                    }
                     break;
             }
         }
